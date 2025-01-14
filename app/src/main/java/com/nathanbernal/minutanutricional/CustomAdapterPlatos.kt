@@ -6,14 +6,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.nathanbernal.minutanutricional.models.Menus
 import com.nathanbernal.minutanutricional.models.Platos
 
-class CustomAdapter(private val menuList: List<Menus>): RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
-    val onItemClick: ((Menus) -> Unit)? = null
-    private var listener: ((Menus) -> Unit)? = null
+class CustomAdapterPlatos(private val platosList: List<Platos>): RecyclerView.Adapter<CustomAdapterPlatos.ViewHolder>() {
+    val onItemClick: ((Platos) -> Unit)? = null
+    private var listener: ((Platos) -> Unit)? = null
 
-    fun setOnItemClickListener(f: (Menus) -> Unit) {
+    fun setOnItemClickListener(f: (Platos) -> Unit) {
         listener = f
     }
 
@@ -24,13 +23,13 @@ class CustomAdapter(private val menuList: List<Menus>): RecyclerView.Adapter<Cus
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.itemTitle.text = menuList[i].nombre
-        viewHolder.itemDetail.text = menuList[i].descripcion
-        viewHolder.itemImage.setImageResource(menuList[i].imgResource)
+        viewHolder.itemTitle.text = platosList[i].nombre
+        viewHolder.itemDetail.text = platosList[i].descripcion
+        viewHolder.itemImage.setImageResource(platosList[i].imgResource)
     }
 
     override fun getItemCount(): Int {
-        return menuList.size
+        return platosList.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -45,8 +44,8 @@ class CustomAdapter(private val menuList: List<Menus>): RecyclerView.Adapter<Cus
             * Se puede tocar el card para seleccionar semana
             */
             itemView.setOnClickListener {
-                listener?.invoke(menuList[adapterPosition])
-                System.out.println("Position "+adapterPosition+" / "+menuList[adapterPosition].nombre)
+                listener?.invoke(platosList[adapterPosition])
+                System.out.println("Position "+adapterPosition+" / "+platosList[adapterPosition].nombre)
             }
 
         }

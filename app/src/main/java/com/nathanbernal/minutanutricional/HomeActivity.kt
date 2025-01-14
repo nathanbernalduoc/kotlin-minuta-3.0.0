@@ -1,5 +1,7 @@
 package com.nathanbernal.minutanutricional
 
+import android.app.LocaleConfig
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -18,6 +20,8 @@ import com.nathanbernal.minutanutricional.models.Menus
 class HomeActivity : AppCompatActivity() {
 
     private var menuList: ArrayList<Menus> = ArrayList<Menus>()
+    var adapter: CustomAdapter = CustomAdapter(Menus.getMenuList())
+    private lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,11 +31,22 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
         setDataList()
         var adapter = CustomAdapter(menuList)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+    }
+
+    fun goDetail(view: View?) {
+        startActivity(Intent(this, PlatosActivity::class.java))
+        adapter.setOnItemClickListener {
+            System.out.println("Resultado del click "+it.menuId)
+            //Toast.makeText(this, "Menu "+it.menuId, Toast.LENGTH_SHORT).show()
+            System.out.println("Resultado del click "+it.menuId)
+        }
 
     }
 
@@ -47,28 +62,28 @@ class HomeActivity : AppCompatActivity() {
             2,
             1,
             "Semana 2",
-            "Prueba",
+            "Iniciando la semana",
             R.drawable.plato_aa
         ))
         menuList.add(Menus(
             3,
             2,
             "Semana 3",
-            "Prueba",
+            "Ya estamos en marcha!",
             R.drawable.plato_aa
         ))
         menuList.add(Menus(
             4,
             3,
             "Semana 4",
-            "Prueba",
+            "Enfrentando desafíos",
             R.drawable.plato_aa
         ))
         menuList.add(Menus(
             5,
             3,
             "Semana #5",
-            "Prueba",
+            "Estamos casi casi!",
             R.drawable.plato_aa
         ))
     }

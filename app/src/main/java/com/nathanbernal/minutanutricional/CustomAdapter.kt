@@ -10,6 +10,11 @@ import com.nathanbernal.minutanutricional.models.Menus
 
 class CustomAdapter(private val menuList: List<Menus>): RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
     val onItemClick: ((Menus) -> Unit)? = null
+    private var listener: ((Menus) -> Unit)? = null
+
+    fun setOnItemClickListener(f: (Menus) -> Unit) {
+        listener = f
+    }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
 
@@ -35,10 +40,14 @@ class CustomAdapter(private val menuList: List<Menus>): RecyclerView.Adapter<Cus
             itemImage = itemView.findViewById(R.id.item_image)
             itemTitle = itemView.findViewById(R.id.item_title)
             itemDetail = itemView.findViewById(R.id.item_detail)
-            itemImage.setOnClickListener {
-                onItemClick?.invoke(menuList[adapterPosition])
+            /*
+            * Se puede tocar el card para seleccionar semana
+            */
+            itemView.setOnClickListener {
+                listener?.invoke(menuList[adapterPosition])
                 System.out.println("Position "+adapterPosition+" / "+menuList[adapterPosition].nombre)
             }
+
         }
     }
 

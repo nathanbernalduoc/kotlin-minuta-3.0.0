@@ -1,7 +1,6 @@
 package com.nathanbernal.minutanutricional
 
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,11 +10,10 @@ import com.nathanbernal.minutanutricional.models.Menus
 
 class CustomAdapter(private val menuList: List<Menus>): RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
     val onItemClick: ((Menus) -> Unit)? = null
-    val menus: List<Menus> = emptyList()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
 
-        var itemView = LayoutInflater.from(viewGroup.context).inflate(R.layout.card_menu_layout, viewGroup, false)
+        val itemView = LayoutInflater.from(viewGroup.context).inflate(R.layout.card_menu_layout, viewGroup, false)
         return ViewHolder(itemView)
     }
 
@@ -26,7 +24,7 @@ class CustomAdapter(private val menuList: List<Menus>): RecyclerView.Adapter<Cus
     }
 
     override fun getItemCount(): Int {
-        return menuList.size;
+        return menuList.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

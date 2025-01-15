@@ -1,7 +1,9 @@
 package com.nathanbernal.minutanutricional
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -29,6 +31,16 @@ class PlatosActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+    }
+
+    fun goDetail(view: View?) {
+        startActivity(Intent(this, LoginActivity::class.java))
+        adapter.setOnItemClickListener {
+            System.out.println("Resultado del click "+it.menuId)
+            //Toast.makeText(this, "Menu "+it.menuId, Toast.LENGTH_SHORT).show()
+            System.out.println("Resultado del click "+it.menuId)
+        }
 
     }
 

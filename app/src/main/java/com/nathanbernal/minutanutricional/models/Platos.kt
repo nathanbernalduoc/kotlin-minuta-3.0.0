@@ -9,6 +9,7 @@ data class Platos (
     val nombre: String,
     val descripcion: String,
     val imgResource: Int) {
+
     companion object {
         private val listaPlatos = mutableListOf<Platos>()
 

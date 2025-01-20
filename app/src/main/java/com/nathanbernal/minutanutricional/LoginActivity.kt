@@ -3,14 +3,13 @@ package com.nathanbernal.minutanutricional
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.nathanbernal.minutanutricional.models.Usuarios
+import java.util.regex.Matcher
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,12 +20,70 @@ class LoginActivity : AppCompatActivity() {
 
         val mp = MediaPlayer.create(this, R.raw.riser_intro)
         val btn = findViewById<Button>(R.id.btnIniciar)
+        val btnRegistro = findViewById<Button>(R.id.btnNuevo)
+        val btnRecordar = findViewById<Button>(R.id.btnRecordar)
 
-        btn.setOnClickListener {
-            mp.start()
-            startActivity(Intent(this, HomeActivity::class.java))
+        btnRegistro.setOnClickListener {
+
+            startActivity(Intent(this, RegisterActivity::class.java))
+
         }
 
+        btnRecordar.setOnClickListener {
+
+            startActivity(Intent(this, RegisterActivity::class.java))
+
+        }
+
+        btn.setOnClickListener {
+
+            val email = findViewById<EditText>(R.id.loginEmail)
+            val pass = findViewById<EditText>(R.id.loginPassword)
+
+            System.out.println("Email "+email.text)
+            System.out.println("Pass  "+pass.text)
+
+            System.out.println("CHECK EMAIL "+checkMail(email.text.toString()))
+
+            if (!checkMail(email.text.toString())) {
+
+                Toast.makeText(this, "El email proporcionado es incorrecto..", Toast.LENGTH_SHORT).show()
+
+            } else if (!checkLogin(email.text.toString(), pass.text.toString())) {
+
+                Toast.makeText(this, "Las credenciales proporcionadas no son válidas.", Toast.LENGTH_SHORT).show()
+
+            } else {
+
+                mp.start()
+                startActivity(Intent(this, HomeActivity::class.java))
+
+            }
+        }
+
+    }
+
+    fun checkLogin(email:String, pass:String): Boolean {
+
+        System.out.println("Validando usuario")
+        if (email.isBlank() || email.isEmpty() || pass.isBlank() || pass.isEmpty()) {
+            return false
+        } else {
+            val user = Usuarios.getUsuario(email.trim())
+            if (user != null && user.password.equals(pass)) {
+                System.out.println("Usuario encontrado y validado.")
+                return true
+            } else {
+                return false
+            }
+        }
+
+    }
+
+    fun checkMail(email: String): Boolean {
+        var pat:java.util.regex.Pattern = java.util.regex.Pattern.compile("[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}")
+        var compare:Matcher = pat.matcher(email)
+        return compare.find()
     }
 
 }

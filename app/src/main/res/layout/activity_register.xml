@@ -6,10 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_orange"
-    android:textAlignment="center"
-    android:theme="@style/Base.Theme.MinutaNutricional"
-    tools:context=".LoginActivity">
-
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:id="@+id/imagenTop"
@@ -22,8 +19,9 @@
         app:srcCompat="@drawable/arc_2"
         tools:layout_editor_absoluteY="-2dp" />
 
+
     <TextView
-        android:id="@+id/textTitlee"
+        android:id="@+id/textTitle"
         android:layout_width="381dp"
         android:layout_height="50dp"
         android:fontFamily="casual"
@@ -31,24 +29,38 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageLogo"
+        app:layout_constraintBottom_toTopOf="@+id/textSubTitle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.847" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textSubTitle"
+        android:layout_width="381dp"
+        android:layout_height="50dp"
+        android:fontFamily="casual"
+        android:text="Nuevo usuario"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/loginEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.707" />
 
     <ImageView
         android:id="@+id/imageLogo"
         android:layout_width="0dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imagenTop"
-        app:layout_constraintVertical_bias="0.877"
-        app:srcCompat="@drawable/plato_aa" />
+        app:srcCompat="@drawable/plato_aa"
+        tools:layout_editor_absoluteY="111dp" />
 
     <EditText
         android:id="@+id/loginEmail"
@@ -56,11 +68,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="28dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/loginPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/loginNombre"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="68dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
@@ -71,17 +98,18 @@
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="36dp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btnIniciar"
+        app:layout_constraintBottom_toTopOf="@+id/loginNombre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnIniciar"
+        android:id="@+id/btnRegistrar"
         style="@android:style/Widget.Button"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -89,41 +117,24 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/button_background"
-        android:text="Entrar"
+        android:text="Registrarse"
         android:textColor="@color/white"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnNuevo"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnNuevo"
-        style="@android:style/Widget.Button"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/button_background"
-        android:text="Soy nuevo"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnRecordar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRecordar"
+        android:id="@+id/btnVolver"
         style="@android:style/Widget.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="296dp"
+        android:layout_marginBottom="76dp"
         android:background="@drawable/button_background"
-        android:text="Recordar"
+        android:text="Volver"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -137,7 +148,8 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/arc_3"
-        tools:layout_editor_absoluteX="-22dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/arc_3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

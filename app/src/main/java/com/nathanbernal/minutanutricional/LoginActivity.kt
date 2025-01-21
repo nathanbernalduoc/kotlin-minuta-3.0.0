@@ -24,40 +24,28 @@ class LoginActivity : AppCompatActivity() {
         val btnRecordar = findViewById<Button>(R.id.btnRecordar)
 
         btnRegistro.setOnClickListener {
-
             startActivity(Intent(this, RegisterActivity::class.java))
-
         }
 
         btnRecordar.setOnClickListener {
-
             startActivity(Intent(this, RegisterActivity::class.java))
+        }
 
+        btnRecordar.setOnClickListener {
+            startActivity(Intent(this, RecoverActivity::class.java))
         }
 
         btn.setOnClickListener {
-
             val email = findViewById<EditText>(R.id.loginEmail)
             val pass = findViewById<EditText>(R.id.loginPassword)
 
-            System.out.println("Email "+email.text)
-            System.out.println("Pass  "+pass.text)
-
-            System.out.println("CHECK EMAIL "+checkMail(email.text.toString()))
-
             if (!checkMail(email.text.toString())) {
-
                 Toast.makeText(this, "El email proporcionado es incorrecto..", Toast.LENGTH_SHORT).show()
-
             } else if (!checkLogin(email.text.toString(), pass.text.toString())) {
-
                 Toast.makeText(this, "Las credenciales proporcionadas no son válidas.", Toast.LENGTH_SHORT).show()
-
             } else {
-
                 mp.start()
                 startActivity(Intent(this, HomeActivity::class.java))
-
             }
         }
 
@@ -65,13 +53,11 @@ class LoginActivity : AppCompatActivity() {
 
     fun checkLogin(email:String, pass:String): Boolean {
 
-        System.out.println("Validando usuario")
         if (email.isBlank() || email.isEmpty() || pass.isBlank() || pass.isEmpty()) {
             return false
         } else {
             val user = Usuarios.getUsuario(email.trim())
             if (user != null && user.password.equals(pass)) {
-                System.out.println("Usuario encontrado y validado.")
                 return true
             } else {
                 return false

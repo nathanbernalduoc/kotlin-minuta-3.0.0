@@ -41,12 +41,13 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun goDetail(view: View?) {
-        startActivity(Intent(this, PlatosActivity::class.java))
         adapter.setOnItemClickListener {
             System.out.println("Resultado del click "+it.menuId)
-            //Toast.makeText(this, "Menu "+it.menuId, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Menu "+it.menuId, Toast.LENGTH_SHORT).show()
             System.out.println("Resultado del click "+it.menuId)
         }
+        val intent = Intent(this, PlatosActivity::class.java)
+        startActivity(intent)
 
     }
 

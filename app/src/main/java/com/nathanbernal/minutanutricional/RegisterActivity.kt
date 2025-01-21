@@ -46,14 +46,13 @@ class RegisterActivity : AppCompatActivity() {
             } else {
 
                 var cantidad = Usuarios.getUusarioList().count()
-                var usuario = Usuarios(
+
+                Usuarios.addUsuario(Usuarios(
                     cantidad,
                     email.text.toString(),
                     password.text.toString(),
                     nombre.text.toString()
-                )
-
-                Usuarios.addUsuario(usuario)
+                ))
                 System.out.println(Usuarios)
                 Toast.makeText(this, "Se ha almacenado el nuevo usuario.", Toast.LENGTH_SHORT)
                     .show()

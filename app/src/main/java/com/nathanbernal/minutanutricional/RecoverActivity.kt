@@ -28,12 +28,12 @@ class RecoverActivity : AppCompatActivity() {
             } else if (email.text.isEmpty() || email.text.isBlank()) {
                 Toast.makeText(this, "Para proceder con la recuperación se requiere un mail de usuario", Toast.LENGTH_SHORT).show()
             } else {
-                var usuario = Usuarios.getUsuario(email.text.toString());
-                if (usuario.equals()) {
+                val usuario = Usuarios.getUsuario(email.text.toString());
+                if (usuario != null) {
                     Toast.makeText(this, "Su contraseña es " + usuario.password, Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
-                    Toast.makeText(this, "El usuario " + email.text.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "El usuario " + email.text.toString()+" No existe!", Toast.LENGTH_SHORT).show()
                 }
 
 

@@ -8,6 +8,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toDrawable
+import com.airbnb.lottie.LottieAnimationView
 import com.nathanbernal.minutanutricional.models.Usuarios
 import java.util.regex.Matcher
 
@@ -48,6 +50,9 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(Intent(this, HomeActivity::class.java))
             }
         }
+
+        val animationView = findViewById<LottieAnimationView>(R.id.intro_img)
+        animationView.resumeAnimation()
 
     }
 

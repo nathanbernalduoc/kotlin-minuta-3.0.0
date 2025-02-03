@@ -36,19 +36,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--<ImageView
-        android:id="@+id/imageLogo"
-        android:layout_width="0dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imagenTop"
-        app:layout_constraintVertical_bias="0.877"
-        app:srcCompat="@drawable/plato_aa" />-->
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/intro_img"
         android:layout_width="151dp"

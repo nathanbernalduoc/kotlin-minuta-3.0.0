@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieAnimationView
 import com.nathanbernal.minutanutricional.models.Usuarios
 
 class RecoverActivity : AppCompatActivity() {
@@ -43,6 +44,9 @@ class RecoverActivity : AppCompatActivity() {
         btnVolver.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
+
+        val animationView = findViewById<LottieAnimationView>(R.id.recuperar_img)
+        animationView.resumeAnimation()
 
     }
 

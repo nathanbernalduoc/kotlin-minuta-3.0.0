@@ -28,25 +28,24 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageLogo"
+        app:layout_constraintBottom_toTopOf="@+id/recuperar_img"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.183" />
+        app:layout_constraintVertical_bias="0.506" />
 
-    <ImageView
-        android:id="@+id/imageLogo"
-        android:layout_width="0dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="20dp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/recuperar_img"
+        android:layout_width="151dp"
+        android:layout_height="104dp"
+        android:layout_marginBottom="120dp"
         app:layout_constraintBottom_toTopOf="@+id/loginEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imagenTop"
-        app:layout_constraintVertical_bias="0.528"
-        app:srcCompat="@drawable/plato_aa" />
+        app:lottie_autoPlay="false"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/rec" />
 
     <EditText
         android:id="@+id/loginEmail"
@@ -87,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="272dp"
+        android:layout_marginBottom="52dp"
         android:background="@drawable/button_background"
         android:text="Volver"
         android:textColor="@color/white"

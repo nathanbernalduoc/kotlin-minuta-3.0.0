@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieAnimationView
 import com.nathanbernal.minutanutricional.models.Usuarios
 import kotlin.system.exitProcess
 
@@ -60,6 +61,9 @@ class RegisterActivity : AppCompatActivity() {
 
             }
         }
+
+        val animationView = findViewById<LottieAnimationView>(R.id.registro_img)
+        animationView.resumeAnimation()
 
     }
 }

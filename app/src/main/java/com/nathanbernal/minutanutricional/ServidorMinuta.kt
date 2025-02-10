@@ -6,23 +6,27 @@ import com.google.firebase.database.database
 
 data class MenuServicio (
 
-    val menuId: Int,
-    val semanaId: Int,
-    val nombre: String,
-    val descripcion: String,
-    val imagenUri: String) {
+    val menuId: Int = 0,
+    val semanaId: Int = 0,
+    val nombre: String = "",
+    val descripcion: String = "",
+    val imagenUri: String = "") {
 
 }
 
 data class PlatoServicio (
-    val platoId: Int,
-    val menuId: Int,
-    val nombre: String,
-    val descripcion: String,
-    val imagenUri: String) {
+    val platoId: Int = 0,
+    val menuId: Int = 0,
+    val nombre: String = "",
+    val descripcion: String = "",
+    val imagenUri: String = "") {
 
 }
 
+data class SemanaServicio (
+    val menuList: List<MenuServicio> = listOf(),
+    val platoList: List<PlatoServicio> = listOf()
+)
 
 class ServidorMinuta {
     private val databaseMenu: DatabaseReference = Firebase.database.reference.child("menu")

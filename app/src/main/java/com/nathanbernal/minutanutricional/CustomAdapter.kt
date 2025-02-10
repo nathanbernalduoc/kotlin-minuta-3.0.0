@@ -26,7 +26,7 @@ class CustomAdapter(private val menuList: List<Menus>): RecyclerView.Adapter<Cus
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         viewHolder.itemTitle.text = menuList[i].nombre
         viewHolder.itemDetail.text = menuList[i].descripcion
-        viewHolder.itemImage.setImageResource(menuList[i].imgResource)
+        viewHolder.itemImage.setImageResource(R.drawable.plato_aa) // menuList[i].imgResource)
     }
 
     override fun getItemCount(): Int {

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "610204840264",
+    "firebase_url": "https://duoc-minuta-last-default-rtdb.firebaseio.com",
+    "project_id": "duoc-minuta-last",
+    "storage_bucket": "duoc-minuta-last.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610204840264:android:b2a23f8a77e55bbc10c37d",
+        "android_client_info": {
+          "package_name": "com.nathanbernal.minutanutricional"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGcPwRrqxPVs3swKyEevLIT4yyacyTXqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

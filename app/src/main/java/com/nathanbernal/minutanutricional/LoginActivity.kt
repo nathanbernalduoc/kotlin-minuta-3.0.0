@@ -5,6 +5,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.HorizontalScrollView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -53,6 +54,17 @@ class LoginActivity : AppCompatActivity() {
 
         val animationView = findViewById<LottieAnimationView>(R.id.intro_img)
         animationView.resumeAnimation()
+
+        var usuario: Usuarios = Usuarios(1, "nathanbernal@gmail.com", "123", "Nathan Bernal")
+        Usuarios.addUsuario(usuario)
+
+        // INSERCIÓN INICIAL DE DATOS
+
+        /*
+        val servidorMinuta = ServidorMinuta()
+        val dataMenu =servidorMinuta.crearDatoMenu()
+        servidorMinuta.enviarDatosMenu(dataMenu)
+        */
 
     }
 

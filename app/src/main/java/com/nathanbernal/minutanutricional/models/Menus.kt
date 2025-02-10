@@ -3,11 +3,13 @@ package com.nathanbernal.minutanutricional.models
 import android.view.Menu
 
 data class Menus (
+
     val menuId: Int,
     val semanaId: Int,
     val nombre: String,
     val descripcion: String,
     val imgResource: Int) {
+
     companion object {
         private val listaMenus = mutableListOf<Menus>()
 

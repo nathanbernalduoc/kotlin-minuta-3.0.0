@@ -1,20 +1,12 @@
 package com.nathanbernal.minutanutricional
 
-import android.app.LocaleConfig
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.View.OnClickListener
-import android.widget.AdapterView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.core.snap
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -22,9 +14,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.getValue
 import com.nathanbernal.minutanutricional.models.Menus
-import kotlinx.coroutines.runBlocking
 
 class HomeActivity : AppCompatActivity() {
 
@@ -41,10 +31,14 @@ class HomeActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().getReference("menu")
         Log.d("[main]", "FIREBASE CARGADO...")
 
+        // CREACIÖN DE PLATOS
+        //val servidorMinuta = ServidorMinuta()
+        //val platos = servidorMinuta.crearDatoPlato()
+        //servidorMinuta.enviarDatosPlato(platos)
+
         setContentView(R.layout.activity_home)
 
         obtenerDatosMenu()
-        //setDataList()
 
         adapter = CustomAdapter(menuList)
         var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
@@ -108,42 +102,6 @@ class HomeActivity : AppCompatActivity() {
         val intent = Intent(this, PlatosActivity::class.java)
         startActivity(intent)
 
-    }
-
-    fun setDataList() {
-
-        //menuList = obtenerDatosMenu()
-
-        Log.d("Menu List", menuList.toString())
-
-        /*menuList.add(Menus(
-            1,
-            1,
-            "Semana 1",
-            "Prueba",
-            R.drawable.plato_aa
-        ))
-        menuList.add(Menus(
-            2,
-            1,
-            "Semana 2",
-            "Iniciando la semana",
-            R.drawable.plato_aa
-        ))
-        menuList.add(Menus(
-            3,
-            2,
-            "Semana 3",
-            "Ya estamos en marcha!",
-            R.drawable.plato_aa
-        ))
-        menuList.add(Menus(
-            4,
-            3,
-            "Semana 4",
-            "Enfrentando desafíos",
-            R.drawable.plato_aa
-        ))*/12
     }
 
 }

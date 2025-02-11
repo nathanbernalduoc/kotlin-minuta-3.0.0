@@ -24,12 +24,12 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.getValue
 import com.nathanbernal.minutanutricional.models.Menus
+import kotlinx.coroutines.runBlocking
 
 class HomeActivity : AppCompatActivity() {
 
     private var menuList: ArrayList<Menus> = ArrayList<Menus>()
-    var adapter: CustomAdapter = CustomAdapter(Menus.getMenuList())
-    private lateinit var context: Context
+    lateinit var adapter: CustomAdapter // = CustomAdapter(Menus.getMenuList())
     private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,31 +37,35 @@ class HomeActivity : AppCompatActivity() {
         this.supportActionBar?.hide()
         enableEdgeToEdge()
 
+        Log.d("[main]", "CARGANDO FIREBASE...")
         database = FirebaseDatabase.getInstance().getReference("menu")
-
-        setDataList()
-
-        //menuList = obtenerDatosMenu()
+        Log.d("[main]", "FIREBASE CARGADO...")
 
         setContentView(R.layout.activity_home)
-        var adapter = CustomAdapter(menuList)
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        obtenerDatosMenu()
+        //setDataList()
+
+        adapter = CustomAdapter(menuList)
+        var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
     }
 
-    private fun obtenerDatosMenu(): ArrayList<Menus> {
+    private fun obtenerDatosMenu() {
 
         val menuRef = database.child("/")
 
         menuRef.addListenerForSingleValueEvent(object: ValueEventListener {
+
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                Log.d("[obtenerDatosMenu]", "RECUPERANDO DATOS...")
+
                 if (snapshot.exists()) {
+
                     for (sem in snapshot.children) {
-                        Log.d("FOREACH ", sem.key.toString())
-                        Log.d("FOREACH ", sem.child("nombre").getValue().toString())
-                        Log.d("FOREACH ", sem.child("menuId").getValue().toString())
 
                         menuList.add(Menus(
                             sem.child("menuId").getValue().toString().toInt(),
@@ -70,24 +74,32 @@ class HomeActivity : AppCompatActivity() {
                             sem.child("descripcion").getValue().toString(),
                             R.drawable.plato_aa //sem.child("imagenUri").getValue().toString(),
                         ))
+
                     }
 
+                    Log.d("[Obtener datos]", menuList.toString())
+                    adapter = CustomAdapter(menuList)
+                    var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+                    //recyclerView.layoutManager = LinearLayoutManager(this)
+                    recyclerView.adapter = adapter
+
                 } else {
-                    Log.d("Menu Api", "No se encontraron datos")
+                    Log.d("[Menu Api]", "No se encontraron datos")
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("Error Menu", "Error al obtener datos de semana ${error.message}")
+                Log.e("[Error Menu]", "Error al obtener datos de semana ${error.message}")
             }
 
         })
 
-        return menuList
+        Log.d("[MENU-OUT]", menuList.count().toString())
 
     }
 
     fun goDetail(view: View?) {
+
         adapter.setOnItemClickListener {
             System.out.println("Resultado del click "+it.menuId)
             Toast.makeText(this, "Menu "+it.menuId, Toast.LENGTH_SHORT).show()
@@ -100,9 +112,11 @@ class HomeActivity : AppCompatActivity() {
 
     fun setDataList() {
 
-        menuList = obtenerDatosMenu()
+        //menuList = obtenerDatosMenu()
 
-        menuList.add(Menus(
+        Log.d("Menu List", menuList.toString())
+
+        /*menuList.add(Menus(
             1,
             1,
             "Semana 1",
@@ -129,14 +143,7 @@ class HomeActivity : AppCompatActivity() {
             "Semana 4",
             "Enfrentando desafíos",
             R.drawable.plato_aa
-        ))
-        menuList.add(Menus(
-            5,
-            3,
-            "Semana #5",
-            "Estamos casi casi!",
-            R.drawable.plato_aa
-        ))
+        ))*/12
     }
 
 }
